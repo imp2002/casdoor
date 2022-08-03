@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {Tag, Tooltip, message} from "antd";
-import {QuestionCircleTwoTone} from "@ant-design/icons";
+import { Tag, Tooltip, message } from "antd";
+import { QuestionCircleTwoTone } from "@ant-design/icons";
 import React from "react";
-import {isMobile as isMobileDevice} from "react-device-detect";
+import { isMobile as isMobileDevice } from "react-device-detect";
 import "./i18n";
 import i18next from "i18next";
 import copy from "copy-to-clipboard";
-import {authConfig} from "./auth/Auth";
-import {Helmet} from "react-helmet";
+import { authConfig } from "./auth/Auth";
+import { Helmet } from "react-helmet";
 import * as Conf from "./Conf";
 
 export let ServerUrl = "";
@@ -34,93 +34,93 @@ export const CountryRegionData = getCountryRegionData();
 export const OtherProviderInfo = {
   SMS: {
     "Aliyun SMS": {
-      logo: `${StaticBaseUrl}/img/social_aliyun.png`,
+      logo: require("@/assets/img/social_aliyun.png").default,
       url: "https://aliyun.com/product/sms",
     },
     "Tencent Cloud SMS": {
-      logo: `${StaticBaseUrl}/img/social_tencent_cloud.jpg`,
+      logo: require("@/assets/img/social_tencent_cloud.jpg").default,
       url: "https://cloud.tencent.com/product/sms",
     },
     "Volc Engine SMS": {
-      logo: `${StaticBaseUrl}/img/social_volc_engine.jpg`,
+      logo: require("@/assets/img/social_volc_engine.jpg").default,
       url: "https://www.volcengine.com/products/cloud-sms",
     },
     "Huawei Cloud SMS": {
-      logo: `${StaticBaseUrl}/img/social_huawei.png`,
+      logo: require("@/assets/img/social_huawei.png").default,
       url: "https://www.huaweicloud.com/product/msgsms.html",
     },
   },
   Email: {
     "Default": {
-      logo: `${StaticBaseUrl}/img/social_default.png`,
+      logo: require("@/assets/img/social_default.png").default,
       url: "",
     },
   },
   Storage: {
     "Local File System": {
-      logo: `${StaticBaseUrl}/img/social_file.png`,
+      logo: require("@/assets/img/social_file.png").default,
       url: "",
     },
     "AWS S3": {
-      logo: `${StaticBaseUrl}/img/social_aws.png`,
+      logo: require("@/assets/img/social_aws.png").default,
       url: "https://aws.amazon.com/s3",
     },
     "Aliyun OSS": {
-      logo: `${StaticBaseUrl}/img/social_aliyun.png`,
+      logo: require("@/assets/img/social_aliyun.png").default,
       url: "https://aliyun.com/product/oss",
     },
     "Tencent Cloud COS": {
-      logo: `${StaticBaseUrl}/img/social_tencent_cloud.jpg`,
+      logo: require("@/assets/img/social_tencent_cloud.jpg").default,
       url: "https://cloud.tencent.com/product/cos",
     },
     "Azure Blob": {
-      logo: `${StaticBaseUrl}/img/social_azure.jpg`,
+      logo: require("@/assets/img/social_azure.jpg").default,
       url: "https://azure.microsoft.com/en-us/services/storage/blobs/"
     }
   },
   SAML: {
     "Aliyun IDaaS": {
-      logo: `${StaticBaseUrl}/img/social_aliyun.png`,
+      logo: require("@/assets/img/social_aliyun.png").default,
       url: "https://aliyun.com/product/idaas"
     },
     "Keycloak": {
-      logo: `${StaticBaseUrl}/img/social_keycloak.png`,
+      logo: require("@/assets/img/social_keycloak.png").default,
       url: "https://www.keycloak.org/"
     },
   },
   Payment: {
     "Alipay": {
-      logo: `${StaticBaseUrl}/img/payment_alipay.png`,
+      logo: require("@/assets/img/payment_alipay.png").default,
       url: "https://www.alipay.com/"
     },
     "WeChat Pay": {
-      logo: `${StaticBaseUrl}/img/payment_wechat_pay.png`,
+      logo: require("@/assets/img/payment_wechat_pay.png").default,
       url: "https://pay.weixin.qq.com/"
     },
     "PayPal": {
-      logo: `${StaticBaseUrl}/img/payment_paypal.png`,
+      logo: require("@/assets/img/payment_paypal.png").default,
       url: "https://www.paypal.com/"
     },
     "GC": {
-      logo: `${StaticBaseUrl}/img/payment_gc.png`,
+      logo: require("@/assets/img/payment_gc.png").default,
       url: "https://gc.org"
     },
   },
   Captcha: {
     "Default": {
-      logo: `${StaticBaseUrl}/img/social_default.png`,
+      logo: require("@/assets/img/social_default.png").default,
       url: "https://pkg.go.dev/github.com/dchest/captcha",
     },
     "reCAPTCHA": {
-      logo: `${StaticBaseUrl}/img/social_recaptcha.png`,
+      logo: require("@/assets/img/social_recaptcha.png").default,
       url: "https://www.google.com/recaptcha",
     },
     "hCaptcha": {
-      logo: `${StaticBaseUrl}/img/social_hcaptcha.png`,
+      logo: require("@/assets/img/social_hcaptcha.png").default,
       url: "https://www.hcaptcha.com",
     },
     "Aliyun Captcha": {
-      logo: `${StaticBaseUrl}/img/social_aliyun.png`,
+      logo: require("@/assets/img/social_aliyun.png").default,
       url: "https://help.aliyun.com/product/28308.html",
     }
   }
@@ -134,9 +134,9 @@ export function getCountryRegionData() {
 
   var countries = require("i18n-iso-countries");
   countries.registerLocale(require("i18n-iso-countries/langs/" + language + ".json"));
-  var data = countries.getNames(language, {select: "official"});
+  var data = countries.getNames(language, { select: "official" });
   var result = [];
-  for (var i in data) {result.push({code:i, name:data[i]});}
+  for (var i in data) { result.push({ code: i, name: data[i] }); }
   return result;
 }
 
@@ -301,7 +301,7 @@ export function isPromptAnswered(user, application) {
   }
 
   const providerItems = getAllPromptedProviderItems(application);
-  for (let i = 0; i < providerItems.length; i ++) {
+  for (let i = 0; i < providerItems.length; i++) {
     if (!isProviderItemAnswered(user, application, providerItems[i])) {
       return false;
     }
@@ -398,9 +398,9 @@ export function trim(str, ch) {
   let start = 0;
   let end = str.length;
 
-  while(start < end && str[start] === ch) {++start;}
+  while (start < end && str[start] === ch) { ++start; }
 
-  while(end > start && str[end - 1] === ch) {--end;}
+  while (end > start && str[end - 1] === ch) { --end; }
 
   return (start > 0 || end < str.length) ? str.substring(start, end) : str;
 }
@@ -428,7 +428,7 @@ export function getShortName(s) {
   return s.split("/").slice(-1)[0];
 }
 
-export function getShortText(s, maxLength=35) {
+export function getShortText(s, maxLength = 35) {
   if (s.length > maxLength) {
     return `${s.slice(0, maxLength)}...`;
   } else {
@@ -445,13 +445,13 @@ export function getFriendlyFileSize(size) {
   let num = (size / Math.pow(1024, i));
   let round = Math.round(num);
   num = round < 10 ? num.toFixed(2) : round < 100 ? num.toFixed(1) : round;
-  return `${num} ${"KMGTPEZY"[i-1]}B`;
+  return `${num} ${"KMGTPEZY"[i - 1]}B`;
 }
 
 function getRandomInt(s) {
   let hash = 0;
   if (s.length !== 0) {
-    for (let i = 0; i < s.length; i ++) {
+    for (let i = 0; i < s.length; i++) {
       let char = s.charCodeAt(i);
       hash = ((hash << 5) - hash) + char;
       hash = hash & hash;
@@ -526,7 +526,7 @@ export function getProviderLogoURL(provider) {
     if (provider.type === "Custom") {
       return provider.customLogo;
     }
-    return `${StaticBaseUrl}/img/social_${provider.type.toLowerCase()}.png`;
+    return require(`@/assets/img/social_${provider.type.toLowerCase()}.png`).default;
   } else {
     return OtherProviderInfo[provider.category][provider.type].logo;
   }
@@ -544,77 +544,77 @@ export function getProviderTypeOptions(category) {
   if (category === "OAuth") {
     return (
       [
-        {id: "Google", name: "Google"},
-        {id: "GitHub", name: "GitHub"},
-        {id: "QQ", name: "QQ"},
-        {id: "WeChat", name: "WeChat"},
-        {id: "WeChatMiniProgram", name: "WeChat Mini Program"},
-        {id: "Facebook", name: "Facebook"},
-        {id: "DingTalk", name: "DingTalk"},
-        {id: "Weibo", name: "Weibo"},
-        {id: "Gitee", name: "Gitee"},
-        {id: "LinkedIn", name: "LinkedIn"},
-        {id: "WeCom", name: "WeCom"},
-        {id: "Lark", name: "Lark"},
-        {id: "GitLab", name: "GitLab"},
-        {id: "Adfs", name: "Adfs"},
-        {id: "Baidu", name: "Baidu"},
-        {id: "Alipay", name: "Alipay"},
-        {id: "Casdoor", name: "Casdoor"},
-        {id: "Infoflow", name: "Infoflow"},
-        {id: "Apple", name: "Apple"},
-        {id: "AzureAD", name: "AzureAD"},
-        {id: "Slack", name: "Slack"},
-        {id: "Steam", name: "Steam"},
-        {id: "Bilibili", name: "Bilibili"},
-        {id: "Okta", name: "Okta"},
-        {id: "Douyin", name: "Douyin"},
-        {id: "Custom", name: "Custom"},
+        { id: "Google", name: "Google" },
+        { id: "GitHub", name: "GitHub" },
+        { id: "QQ", name: "QQ" },
+        { id: "WeChat", name: "WeChat" },
+        { id: "WeChatMiniProgram", name: "WeChat Mini Program" },
+        { id: "Facebook", name: "Facebook" },
+        { id: "DingTalk", name: "DingTalk" },
+        { id: "Weibo", name: "Weibo" },
+        { id: "Gitee", name: "Gitee" },
+        { id: "LinkedIn", name: "LinkedIn" },
+        { id: "WeCom", name: "WeCom" },
+        { id: "Lark", name: "Lark" },
+        { id: "GitLab", name: "GitLab" },
+        { id: "Adfs", name: "Adfs" },
+        { id: "Baidu", name: "Baidu" },
+        { id: "Alipay", name: "Alipay" },
+        { id: "Casdoor", name: "Casdoor" },
+        { id: "Infoflow", name: "Infoflow" },
+        { id: "Apple", name: "Apple" },
+        { id: "AzureAD", name: "AzureAD" },
+        { id: "Slack", name: "Slack" },
+        { id: "Steam", name: "Steam" },
+        { id: "Bilibili", name: "Bilibili" },
+        { id: "Okta", name: "Okta" },
+        { id: "Douyin", name: "Douyin" },
+        { id: "Custom", name: "Custom" },
       ]
     );
   } else if (category === "Email") {
     return (
       [
-        {id: "Default", name: "Default"},
+        { id: "Default", name: "Default" },
       ]
     );
   } else if (category === "SMS") {
     return (
       [
-        {id: "Aliyun SMS", name: "Aliyun SMS"},
-        {id: "Tencent Cloud SMS", name: "Tencent Cloud SMS"},
-        {id: "Volc Engine SMS", name: "Volc Engine SMS"},
-        {id: "Huawei Cloud SMS", name: "Huawei Cloud SMS"},
+        { id: "Aliyun SMS", name: "Aliyun SMS" },
+        { id: "Tencent Cloud SMS", name: "Tencent Cloud SMS" },
+        { id: "Volc Engine SMS", name: "Volc Engine SMS" },
+        { id: "Huawei Cloud SMS", name: "Huawei Cloud SMS" },
       ]
     );
   } else if (category === "Storage") {
     return (
       [
-        {id: "Local File System", name: "Local File System"},
-        {id: "AWS S3", name: "AWS S3"},
-        {id: "Aliyun OSS", name: "Aliyun OSS"},
-        {id: "Tencent Cloud COS", name: "Tencent Cloud COS"},
-        {id: "Azure Blob", name: "Azure Blob"}
+        { id: "Local File System", name: "Local File System" },
+        { id: "AWS S3", name: "AWS S3" },
+        { id: "Aliyun OSS", name: "Aliyun OSS" },
+        { id: "Tencent Cloud COS", name: "Tencent Cloud COS" },
+        { id: "Azure Blob", name: "Azure Blob" }
       ]
     );
   } else if (category === "SAML") {
     return ([
-      {id: "Aliyun IDaaS", name: "Aliyun IDaaS"},
-      {id: "Keycloak", name: "Keycloak"},
+      { id: "Aliyun IDaaS", name: "Aliyun IDaaS" },
+      { id: "Keycloak", name: "Keycloak" },
     ]);
   } else if (category === "Payment") {
     return ([
-      {id: "Alipay", name: "Alipay"},
-      {id: "WeChat Pay", name: "WeChat Pay"},
-      {id: "PayPal", name: "PayPal"},
-      {id: "GC", name: "GC"},
+      { id: "Alipay", name: "Alipay" },
+      { id: "WeChat Pay", name: "WeChat Pay" },
+      { id: "PayPal", name: "PayPal" },
+      { id: "GC", name: "GC" },
     ]);
   } else if (category === "Captcha") {
     return ([
-      {id: "Default", name: "Default"},
-      {id: "reCAPTCHA", name: "reCAPTCHA"},
-      {id: "hCaptcha", name: "hCaptcha"},
-      {id: "Aliyun Captcha", name: "Aliyun Captcha"},
+      { id: "Default", name: "Default" },
+      { id: "reCAPTCHA", name: "reCAPTCHA" },
+      { id: "hCaptcha", name: "hCaptcha" },
+      { id: "Aliyun Captcha", name: "Aliyun Captcha" },
     ]);
   } else {
     return [];
@@ -625,14 +625,14 @@ export function getProviderSubTypeOptions(type) {
   if (type === "WeCom" || type === "Infoflow") {
     return (
       [
-        {id: "Internal", name: "Internal"},
-        {id: "Third-party", name: "Third-party"},
+        { id: "Internal", name: "Internal" },
+        { id: "Third-party", name: "Third-party" },
       ]
     );
   } else if (type === "Aliyun Captcha") {
     return [
-      {id: "nc", name: "Sliding Validation"},
-      {id: "ic", name: "Intelligent Validation"},
+      { id: "nc", name: "Sliding Validation" },
+      { id: "ic", name: "Intelligent Validation" },
     ];
   } else {
     return [];
@@ -647,12 +647,12 @@ export function renderLogo(application) {
   if (application.homepageUrl !== "") {
     return (
       <a target="_blank" rel="noreferrer" href={application.homepageUrl}>
-        <img width={250} src={application.logo} alt={application.displayName} style={{marginBottom: "30px"}} />
+        <img width={250} src={application.logo} alt={application.displayName} style={{ marginBottom: "30px" }} />
       </a>
     );
   } else {
     return (
-      <img width={250} src={application.logo} alt={application.displayName} style={{marginBottom: "30px"}} />
+      <img width={250} src={application.logo} alt={application.displayName} style={{ marginBottom: "30px" }} />
     );
   }
 }
@@ -718,7 +718,7 @@ export function goToForget(ths, application) {
 }
 
 export function renderHelmet(application) {
-  if (application === undefined || application === null || application.organizationObj === undefined || application.organizationObj === null ||application.organizationObj === "") {
+  if (application === undefined || application === null || application.organizationObj === undefined || application.organizationObj === null || application.organizationObj === "") {
     return null;
   }
 
@@ -733,7 +733,7 @@ export function renderHelmet(application) {
 export function getLabel(text, tooltip) {
   return (
     <React.Fragment>
-      <span style={{marginRight: 4}}>{text}</span>
+      <span style={{ marginRight: 4 }}>{text}</span>
       <Tooltip placement="top" title={tooltip}>
         <QuestionCircleTwoTone twoToneColor="rgb(45,120,213)" />
       </Tooltip>
@@ -761,7 +761,7 @@ export function getMaskedPhone(s) {
 }
 
 export function getMaskedEmail(email) {
-  if (email === "") {return;}
+  if (email === "") { return; }
   const tokens = email.split("@");
   let username = tokens[0];
   username = maskString(username);
@@ -786,7 +786,7 @@ export function getDeduplicatedArray(array, filterArray, key) {
 export function getNewRowNameForTable(table, rowName) {
   const emptyCount = table.filter(row => row.name.includes(rowName)).length;
   let res = rowName;
-  for (let i = 0; i < emptyCount; i ++) {
+  for (let i = 0; i < emptyCount; i++) {
     res = res + " ";
   }
   return res;
@@ -798,7 +798,7 @@ export function getTagColor(s) {
 
 export function getTags(tags) {
   let res = [];
-  if (!tags) {return res;}
+  if (!tags) { return res; }
   tags.forEach((tag, i) => {
     res.push(
       <Tag color={getTagColor(tag)}>
@@ -837,98 +837,98 @@ export function scrollToDiv(divId) {
   if (divId) {
     let ele = document.getElementById(divId);
     if (ele) {
-      ele.scrollIntoView({behavior: "smooth"});
+      ele.scrollIntoView({ behavior: "smooth" });
     }
   }
 }
 
 export function getSyncerTableColumns(syncer) {
   switch (syncer.type) {
-  case "Keycloak":
-    return [
-      {
-        "name":"ID",
-        "type":"string",
-        "casdoorName":"Id",
-        "isHashed":true,
-        "values":[
+    case "Keycloak":
+      return [
+        {
+          "name": "ID",
+          "type": "string",
+          "casdoorName": "Id",
+          "isHashed": true,
+          "values": [
 
-        ]
-      },
-      {
-        "name":"USERNAME",
-        "type":"string",
-        "casdoorName":"Name",
-        "isHashed":true,
-        "values":[
+          ]
+        },
+        {
+          "name": "USERNAME",
+          "type": "string",
+          "casdoorName": "Name",
+          "isHashed": true,
+          "values": [
 
-        ]
-      },
-      {
-        "name":"LAST_NAME+FIRST_NAME",
-        "type":"string",
-        "casdoorName":"DisplayName",
-        "isHashed":true,
-        "values":[
+          ]
+        },
+        {
+          "name": "LAST_NAME+FIRST_NAME",
+          "type": "string",
+          "casdoorName": "DisplayName",
+          "isHashed": true,
+          "values": [
 
-        ]
-      },
-      {
-        "name":"EMAIL",
-        "type":"string",
-        "casdoorName":"Email",
-        "isHashed":true,
-        "values":[
+          ]
+        },
+        {
+          "name": "EMAIL",
+          "type": "string",
+          "casdoorName": "Email",
+          "isHashed": true,
+          "values": [
 
-        ]
-      },
-      {
-        "name":"EMAIL_VERIFIED",
-        "type":"boolean",
-        "casdoorName":"EmailVerified",
-        "isHashed":true,
-        "values":[
+          ]
+        },
+        {
+          "name": "EMAIL_VERIFIED",
+          "type": "boolean",
+          "casdoorName": "EmailVerified",
+          "isHashed": true,
+          "values": [
 
-        ]
-      },
-      {
-        "name":"FIRST_NAME",
-        "type":"string",
-        "casdoorName":"FirstName",
-        "isHashed":true,
-        "values":[
+          ]
+        },
+        {
+          "name": "FIRST_NAME",
+          "type": "string",
+          "casdoorName": "FirstName",
+          "isHashed": true,
+          "values": [
 
-        ]
-      },
-      {
-        "name":"LAST_NAME",
-        "type":"string",
-        "casdoorName":"LastName",
-        "isHashed":true,
-        "values":[
+          ]
+        },
+        {
+          "name": "LAST_NAME",
+          "type": "string",
+          "casdoorName": "LastName",
+          "isHashed": true,
+          "values": [
 
-        ]
-      },
-      {
-        "name":"CREATED_TIMESTAMP",
-        "type":"string",
-        "casdoorName":"CreatedTime",
-        "isHashed":true,
-        "values":[
+          ]
+        },
+        {
+          "name": "CREATED_TIMESTAMP",
+          "type": "string",
+          "casdoorName": "CreatedTime",
+          "isHashed": true,
+          "values": [
 
-        ]
-      },
-      {
-        "name":"ENABLED",
-        "type":"boolean",
-        "casdoorName":"IsForbidden",
-        "isHashed":true,
-        "values":[
+          ]
+        },
+        {
+          "name": "ENABLED",
+          "type": "boolean",
+          "casdoorName": "IsForbidden",
+          "isHashed": true,
+          "values": [
 
-        ]
-      }
-    ];
-  default:
-    return [];
+          ]
+        }
+      ];
+    default:
+      return [];
   }
 }
